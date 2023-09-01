@@ -29,6 +29,7 @@
     padding: 2rem;
     text-align: left;
     margin: 0 auto;
+    color: white;
   }
   
   .hero-content .subtitle {
@@ -95,6 +96,8 @@
     margin-bottom: 0.5rem;
   }
 
-
+.feature-item p{
+  color: black;
+}
 
   

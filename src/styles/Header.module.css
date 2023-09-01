@@ -17,6 +17,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
+  background-color: white;
 }
 
 .main-nav a {
@@ -31,6 +32,13 @@
 .main-nav-item {
   text-decoration: none;
   margin-right: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.signInLink {
+  margin-left: 0.5rem;
 }
 
 .main-nav-item:hover {

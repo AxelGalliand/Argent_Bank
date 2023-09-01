@@ -4,6 +4,7 @@ export const userSlice = createSlice({
     name: "user",
     initialState: {
         isLogged: false,
+        token: null,
         number: 1
     },
     reducers: {
@@ -18,11 +19,18 @@ export const userSlice = createSlice({
         },
         decrement: (state) => {
             state.number--
+        },
+        /**
+         * @param {string} payload token
+         */
+        signIn: (state, {payload}) => {
+            state.token = payload
+            state.isLogged = true
         }
     }
 
 })
 
-export const {increment, add, decrement } = userSlice.actions
+export const {increment, add, decrement, signIn } = userSlice.actions
 export const stateUser = (state) => state.user;
 export default userSlice.reducer;

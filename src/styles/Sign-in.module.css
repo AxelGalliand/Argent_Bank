@@ -4,11 +4,12 @@
   
   .bg-dark {
     background-color: #12002b;
+
   }
 
   .sign-in-button {
     display: block;
-    width: 100%;
+    /* width: 100%; */
     padding: 8px;
     font-size: 1.1rem;
     font-weight: bold;
@@ -16,6 +17,7 @@
     border-color: #00bc77;
     background-color: #00bc77;
     color: #fff;
+
   }
   
   .sign-in-content {
@@ -25,6 +27,8 @@
     margin: 0 auto;
     margin-top: 3rem;
     padding: 2rem;
+    color: black;
+    border-radius: 10px;
   }
 
   .sign-in-icon {
@@ -40,6 +44,7 @@
     flex-direction: column;
     text-align: left;
     margin-bottom: 1rem;
+
   }
   
   .input-wrapper label {
@@ -49,4 +54,5 @@
   .input-wrapper input {
     padding: 5px;
     font-size: 1.2rem;
+    border-radius: 5px;
   }
