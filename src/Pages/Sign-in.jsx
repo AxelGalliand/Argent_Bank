@@ -3,14 +3,15 @@ import styles from '../styles/Sign-in.module.css';
 import userIcon from "../assets/IMG/circleUser.svg";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { signIn } from "../features/user.slice";
+import { signIn, setToken } from "../features/user.slice";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 /**
  * function to creat the header of the website
  * @returns {XMLDocument}
  */
-export function SignIn ({getAccess}) {
+export function SignIn () {
  const inputUserId = useRef();
  const inputUserPass = useRef();
  const getAccessRef = useRef();
@@ -27,15 +28,19 @@ export function SignIn ({getAccess}) {
 
   axios.post("http://localhost:3001/api/v1/user/login",data).then((response) => {
     console.log(response)
-    //localStorage.token = response.data.body.token
+
     localStorage.setItem('token', response.data.body.token)
-    dispatch(signIn(response.data.body.token));
+    dispatch(setToken(response.data.body.token));
     axios.post("http://localhost:3001/api/v1/user/profile", {}, {
       headers: {
         Authorization: `Bearer ${response.data.body.token}`
       }
     }).then((response) => {
       console.log(response.data)
+      dispatch(signIn(response.data.body));
+      // dispatch(signIn(response.data.body.lastName));
+      // dispatch(signIn(response.data.body.firstName));
+
     })
     .catch((error)=>{
       console.log(error);
@@ -54,7 +59,7 @@ export function SignIn ({getAccess}) {
     <img src={userIcon} alt="userIcon"/>
       <h1>Sign In</h1>
       
-      <form onSubmit={(e) => handleSubmit(e)} ref={getAccessRef}>
+      <form className={styles["sign-inForm"]} onSubmit={(e) => handleSubmit(e)} ref={getAccessRef}>
         <div className={styles["input-wrapper"]}>
           <label htmlFor="username">Username</label>
           <input type="text" id="username" ref={inputUserId}/>

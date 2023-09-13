@@ -7,12 +7,13 @@
 
   }
 
-  .sign-inForm {
+  .changeForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  .sign-in-button {
+
+  .change-button {
     display: block;
     /* width: 100%; */
     padding: 8px;
@@ -26,7 +27,7 @@
 
   }
   
-  .sign-in-content {
+  .change-content {
     box-sizing: border-box;
     background-color: white;
     width: 300px;

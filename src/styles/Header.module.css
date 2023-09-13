@@ -37,8 +37,21 @@
   align-items: center;
 }
 
+.Sign {
+  display: flex;
+  flex-direction: rox;
+}
+
+.SignInLink{
+display: flex;
+}
+
 .signInLink {
   margin-left: 0.5rem;
+}
+
+.SignOutLink {
+  display: flex;
 }
 
 .main-nav-item:hover {

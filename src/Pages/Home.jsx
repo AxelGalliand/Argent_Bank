@@ -3,40 +3,17 @@ import styles from '../styles/Home.module.css';
 import chat from '../assets/IMG/icon-chat.png';
 import money from '../assets/IMG/icon-money.png';
 import security from '../assets/IMG/icon-security.png';
-import { useDispatch } from "react-redux";
-import { increment, decrement, add } from "../features/user.slice"
+
 /**
  * function to creat the header of the website
  * @returns {XMLDocument}
  */
 export function Home () {
-  const dispatch = useDispatch()
-  const addNumber = () => {
-    dispatch(increment())
-  }
 
-  const decrementNumber = () => {
-    dispatch(decrement())
-  }
-
-  const changeNumber = (value) => {
-    if(value == "") {
-      return 
-    }
-    const number = parseInt(value)
-    dispatch(add(number))
-  }
+ 
   return(
     <main>
-      <div>
-        <button onClick={addNumber}>
-          increment +
-        </button>
-        <button onClick={decrementNumber}>
-          decrement -
-        </button>
-        <input type="number" onChange={(event) => changeNumber(event.target.value)} />
-      </div>
+      
       <div className={styles["hero"]}>
         <section className={styles["hero-content"]}>
           <h2 className={styles["sr-only"]}>Promoted Content</h2>

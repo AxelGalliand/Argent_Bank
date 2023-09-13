@@ -5,32 +5,40 @@ export const userSlice = createSlice({
     initialState: {
         isLogged: false,
         token: null,
-        number: 1
+        firstName: null,
+        lastName: null,
+
     },
     reducers: {
-        increment: (state) => {
-            state.number++
-        },
         /**
-         * @param {number} payload 
+         * @param {object} payload info user
          */
-        add: (state, {payload}) => {
-            state.number += payload
-        },
-        decrement: (state) => {
-            state.number--
+        signIn: (state, {payload}) => {
+            state.lastName = payload.lastName
+            state.firstName = payload.firstName
         },
         /**
          * @param {string} payload token
          */
-        signIn: (state, {payload}) => {
+        setToken: (state, {payload}) => {
             state.token = payload
             state.isLogged = true
+        },
+        /**
+         * @param {object}
+         */
+        signOut: (state) => {
+            state.isLogged = false,
+            state.token = null,
+            state.firstName = null,
+            state.lastName = null,
+            localStorage.removeItem('token')
+    
         }
-    }
 
+    }
 })
 
-export const {increment, add, decrement, signIn } = userSlice.actions
+export const {increment, add, decrement, signIn, setToken, signOut } = userSlice.actions
 export const stateUser = (state) => state.user;
 export default userSlice.reducer;
