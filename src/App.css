@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+main {
+  min-height: calc(100vh - 148px);
+  overflow: hidden;
+}

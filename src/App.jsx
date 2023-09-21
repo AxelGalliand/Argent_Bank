@@ -6,8 +6,33 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Home } from "./Pages/Home";
 import { SignIn } from "./Pages/Sign-in";
 import { User } from "./Pages/User";
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { signIn, setToken } from './features/user.slice';
 
 export function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if(localStorage.token) {
+      axios.post("http://localhost:3001/api/v1/user/profile", {}, {
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`
+        }
+      }).then((response) => {
+        console.log(response.data)
+        dispatch(signIn(response.data.body));
+        dispatch(setToken(localStorage.token))
+        // dispatch(signIn(response.data.body.lastName));
+        // dispatch(signIn(response.data.body.firstName));
+  
+      })
+      .catch((error)=>{
+        console.log(error);
+      });
+    }
+  })
     return (
         <BrowserRouter>
           <Header />

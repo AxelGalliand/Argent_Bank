@@ -40,7 +40,7 @@ export function Header () {
         <p className={styles["signInLink"]}> {firstName} {lastName} 
         </p> </div>
       </Link>
-      <Link onClick={()=> dispatch(signOut())} className={styles["signOut"]} to="/"><div className={styles["SignOutLink"]}>
+      <Link onClick={()=> dispatch(signOut())} className={styles["signOut"]} ><div className={styles["SignOutLink"]}>
           <img src={signOutIcon} alt="signOutIcon"/>
           <p className={styles["signOutLink"]}>Sign Out
           </p> </div>

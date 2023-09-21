@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { signIn, setToken } from "../features/user.slice";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 /**
  * function to creat the header of the website
@@ -16,6 +16,7 @@ export function SignIn () {
  const inputUserPass = useRef();
  const getAccessRef = useRef();
  const dispatch = useDispatch();
+ const navigate = useNavigate()
 
  const handleSubmit = (e) => {
   e.preventDefault();
@@ -38,6 +39,7 @@ export function SignIn () {
     }).then((response) => {
       console.log(response.data)
       dispatch(signIn(response.data.body));
+      navigate('/user')
       // dispatch(signIn(response.data.body.lastName));
       // dispatch(signIn(response.data.body.firstName));
 
