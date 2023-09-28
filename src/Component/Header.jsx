@@ -14,15 +14,10 @@ import { signOut } from "../features/user.slice";
  */
 export function Header () {
   const { isLogged } = useSelector(stateUser)
-  console.log(isLogged)
   const { firstName } = useSelector(stateUser)
-  console.log(firstName)
   const { lastName } = useSelector(stateUser)
-  console.log(lastName)
   const dispatch = useDispatch();
 
-
-  
   return(
     <nav className={styles["main-nav"]}>
     <Link className={styles["main-nav-logo"]} to="/">

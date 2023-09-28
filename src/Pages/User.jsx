@@ -21,11 +21,6 @@ export function User () {
       navigate("/")
     }
   })
-  
-  // const namesEdit = () => {
-  //   setEdit(false);
-     
-  // }
 
     return(
 

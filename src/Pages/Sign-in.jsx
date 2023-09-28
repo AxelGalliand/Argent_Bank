@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { signIn, setToken } from "../features/user.slice";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 /**
  * function to creat the header of the website
@@ -17,7 +17,6 @@ export function SignIn () {
  const getAccessRef = useRef();
  const dispatch = useDispatch();
  const navigate = useNavigate()
-
  const handleSubmit = (e) => {
   e.preventDefault();
 
@@ -25,11 +24,8 @@ export function SignIn () {
     email: inputUserId.current.value,
     password: inputUserPass.current.value,
   };
-  console.log(data);
 
   axios.post("http://localhost:3001/api/v1/user/login",data).then((response) => {
-    console.log(response)
-
     localStorage.setItem('token', response.data.body.token)
     dispatch(setToken(response.data.body.token));
     axios.post("http://localhost:3001/api/v1/user/profile", {}, {
@@ -37,30 +33,22 @@ export function SignIn () {
         Authorization: `Bearer ${response.data.body.token}`
       }
     }).then((response) => {
-      console.log(response.data)
       dispatch(signIn(response.data.body));
       navigate('/user')
-      // dispatch(signIn(response.data.body.lastName));
-      // dispatch(signIn(response.data.body.firstName));
-
     })
     .catch((error)=>{
       console.log(error);
     });
-  //  getAccessRef.current.reset();
   })
   .catch((error)=>{
     console.log(error);
   });
-
 };
-
   return(
     <main className={styles["main bg-dark"]}>
     <section className={styles["sign-in-content"]}>
     <img src={userIcon} alt="userIcon"/>
       <h1>Sign In</h1>
-      
       <form className={styles["sign-inForm"]} onSubmit={(e) => handleSubmit(e)} ref={getAccessRef}>
         <div className={styles["input-wrapper"]}>
           <label htmlFor="username">Username</label>
@@ -74,13 +62,9 @@ export function SignIn () {
           <input type="checkbox" id="remember-me" />
           <label htmlFor="remember-me">Remember me</label>
         </div>
-        {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
-        {/* <a href="./user" className={styles["sign-in-button"]}>Sign In</a> */}
-        {/* <!-- SHOULD BE THE BUTTON BELOW --> */}
        <button className={styles["sign-in-button"]}>Sign In</button> 
       </form>
     </section>
   </main>
   )
 }
-

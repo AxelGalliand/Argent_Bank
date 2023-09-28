@@ -14,7 +14,7 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module
+        - Transaction Module
       summary: Add a comment 
       description: allow the adding of a comment on a transaction
       parameters:
@@ -49,8 +49,8 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module
-      summary: Add a comment 
+        - Transaction Module
+      summary: Edit a comment 
       description: allow the edit of a comment on a transaction
       parameters:
         - name: Authorization
@@ -84,8 +84,8 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module
-      summary: Add a comment 
+        - Transaction Module
+      summary: Delet a comment 
       description: delet a comment on a transaction
       parameters:
         - name: Authorization
@@ -113,7 +113,7 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module
+        - Transaction Module
       summary: get a specific transaction 
       description: get info from on a transaction
       parameters:

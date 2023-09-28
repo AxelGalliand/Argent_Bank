@@ -1,7 +1,6 @@
 import './App.css'
 import { Header } from './Component/Header'
 import { Footer } from './Component/Footer'
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Home } from "./Pages/Home";
 import { SignIn } from "./Pages/Sign-in";
@@ -21,12 +20,8 @@ export function App() {
           Authorization: `Bearer ${localStorage.token}`
         }
       }).then((response) => {
-        console.log(response.data)
         dispatch(signIn(response.data.body));
         dispatch(setToken(localStorage.token))
-        // dispatch(signIn(response.data.body.lastName));
-        // dispatch(signIn(response.data.body.firstName));
-  
       })
       .catch((error)=>{
         console.log(error);
